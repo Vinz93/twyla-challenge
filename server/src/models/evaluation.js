@@ -7,10 +7,10 @@ const Schema = mongoose.Schema;
 /**
  * @swagger
  * definition:
- *   Book:
+ *   Evaluation:
  *     properties:
  *       rate:
- *         type: string
+ *         type: integer
  *       comment:
  *         type: string
  *       user:
@@ -20,13 +20,13 @@ const Schema = mongoose.Schema;
  *     required:
  *       - rate
  *       - comment
- *       - user
- *       - book
  */
 
 const EvaluationSchema = new Schema({
   rate: {
-    type: String,
+    type: Number,
+    min: 1,
+    max: 5,
     required: true,
   },
   comment: {

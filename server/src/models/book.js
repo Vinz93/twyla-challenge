@@ -18,7 +18,6 @@ const Schema = mongoose.Schema;
  *     required:
  *       - title
  *       - isbn
- *       - addedBy
  */
 
 const BookSchema = new Schema({
@@ -41,4 +40,4 @@ const BookSchema = new Schema({
 BookSchema.plugin(paginate);
 BookSchema.plugin(fieldRemover, '__v');
 
-export default mongoose.model('Book', bookSchema);
+export default mongoose.model('Book', BookSchema);

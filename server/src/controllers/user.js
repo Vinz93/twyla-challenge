@@ -84,6 +84,7 @@ const UserController = {
     const newUser = await User.create(req.body);
     const token = jwt.sign({
       userName: newUser.userName,
+      id: newUser.id,
     }, appConfig.passportSecret);
     return res.status(httpStatus.CREATED).json({
       newUser,
@@ -112,7 +113,7 @@ const UserController = {
    */
 
   readByMe(req, res) {
-    return res.json({ userName: req.user });
+    return res.json({ userName: req.user.userName });
   },
 
 };
