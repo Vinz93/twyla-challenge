@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 import httpStatus from 'http-status';
 
 import { paginate } from '../helpers/utils';
-import { APIError } from '../helpers/errors';
 import { appConfig } from '../config/vars';
 import User from '../models/user';
 
@@ -46,7 +45,7 @@ const UserController = {
       offset,
       limit,
     });
-    res.json(users);
+    res.status(httpStatus.OK).json(users);
   },
 
   /**
@@ -83,76 +82,12 @@ const UserController = {
    */
   async create(req, res) {
     const newUser = await User.create(req.body);
-    return res.json(newUser);
-  },
-
-  /**
-   * @swagger
-   * /users/{id}:
-   *   patch:
-   *     tags:
-   *      - User
-   *     description: updates an user
-   *     produces:
-   *       - application/json
-   *     parameters:
-   *       - name: id
-   *         description: User id
-   *         in: path
-   *         required: true
-   *         type: string
-   *       - name: user
-   *         description: User object
-   *         in: body
-   *         required: true
-   *         schema:
-   *           $ref: '#/definitions/User'
-   *     responses:
-   *       200:
-   *         description: User object'
-   */
-
-  async update(req, res) {
-    const user = await User.findById(req.params.id);
-    if (!user) throw new APIError('User not found.', httpStatus.NOT_FOUND);
-    user.set(req.body);
-    await user.save();
-    res.status(httpStatus.NO_CONTENT).end();
-  },
-  /**
-   * @swagger
-   * /users/login:
-   *   post:
-   *     tags:
-   *      - User
-   *     description: Login to the application
-   *     produces:
-   *       - application/json
-   *     parameters:
-   *       - name: email
-   *         description: User's email.
-   *         in: formData
-   *         required: true
-   *         type: string
-   *       - name: password
-   *         description: User's password.
-   *         in: formData
-   *         required: true
-   *         type: string
-   *     responses:
-   *       200:
-   *         description: returns user token'
-   */
-
-  async login(req, res) {
-    const { user } = req;
     const token = jwt.sign({
-      id: user._id,
-      date: Date.now(),
+      userName: newUser.userName,
     }, appConfig.passportSecret);
-    return res.json({
+    return res.status(httpStatus.CREATED).json({
+      newUser,
       token,
-      profile: user,
     });
   },
 
@@ -177,7 +112,7 @@ const UserController = {
    */
 
   readByMe(req, res) {
-    return res.json(req.user);
+    return res.json({ userName: req.user });
   },
 
 };

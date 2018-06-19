@@ -7,49 +7,38 @@ const Schema = mongoose.Schema;
 /**
  * @swagger
  * definition:
- *   Post:
+ *   Book:
  *     properties:
  *       title:
  *         type: string
- *       content:
+ *       isbn:
  *         type: string
- *       image:
- *         type: string
- *       categories:
- *         type: array
- *         items:
- *           type: string
- *       author:
+ *       addedBy:
  *         type: string
  *     required:
  *       - title
- *       - content
- *       - author
+ *       - isbn
+ *       - addedBy
  */
 
-const postSchema = new Schema({
+const BookSchema = new Schema({
   title: {
     type: String,
     required: true,
   },
-  content: {
+  isbn: {
     type: String,
     required: true,
+    unique: 'the isbn is already taken',
   },
-  image: {
-    type: String,
-  },
-  categories: [
-    { type: String },
-  ],
-  author: {
+  addedBy: {
     type: Schema.Types.ObjectId,
     required: true,
     ref: 'User',
   },
 });
 
-postSchema.plugin(paginate);
-postSchema.plugin(fieldRemover, '__v');
+BookSchema.plugin(paginate);
+BookSchema.plugin(fieldRemover, '__v');
 
-export default mongoose.model('Post', postSchema);
+export default mongoose.model('Book', bookSchema);
