@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import paginate from 'mongoose-paginate';
 import fieldRemover from 'mongoose-field-remover';
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 /**
  * @swagger
