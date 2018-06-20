@@ -42,14 +42,13 @@ class BookModal extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.openModal}>Open Modal</button>
+        <button onClick={this.openModal}>Add book</button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
         >
-          <button onClick={this.closeModal}>close</button>
+          <button onClick={this.closeModal}>X</button>
           <BookForm />
         </Modal>
       </div>

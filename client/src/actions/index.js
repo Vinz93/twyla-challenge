@@ -1,5 +1,10 @@
 import * as api from '../api';
-import { CREATE_USER_SUCCESS, CREATE_USER_FAILURE, FETCH_BOOKS } from '../constants/ActionTypes';
+import {
+  CREATE_USER_SUCCESS,
+  CREATE_USER_FAILURE,
+  CREATE_BOOK_SUCCESS,
+  CREATE_BOOK_FAILURE,
+  FETCH_BOOKS } from '../constants/ActionTypes';
 
 export const createUser = (userName) => (dispatch, getState) => {
   return api.createUser(userName).then(response => {
@@ -13,6 +18,21 @@ export const createUser = (userName) => (dispatch, getState) => {
     dispatch({
       type: CREATE_USER_FAILURE,
       message: err.message || 'something went wrong with log in',
+    });
+  });
+};
+
+export const createBook = (book) => (dispatch, getState) => {
+  return api.createBook(book).then(response => {
+    dispatch({
+      type: CREATE_BOOK_SUCCESS,
+      response,
+    });
+  },
+  err => {
+    dispatch({
+      type: CREATE_BOOK_FAILURE,
+      message: err.message || 'something went wrong creating the book',
     });
   });
 };
