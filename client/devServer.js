@@ -7,7 +7,7 @@ const app = express();
 const compiler = webpack(config);
 
 const host = 'http://localhost';
-const port = process.env.npm_config_port ? process.env.npm_config_port : 3000;
+const port = process.env.npm_config_port ? process.env.npm_config_port : 3001;
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,

@@ -34,7 +34,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html',
       filename: 'index.html',
-      title: 'Simple Redux Boilerplate',
+      title: 'Books App',
       inject: 'body'
     }),
     /**
@@ -59,5 +59,8 @@ module.exports = {
         loader: 'style!css!sass'
       }
     ]
-  }
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
 };

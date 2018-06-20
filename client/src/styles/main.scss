@@ -6,6 +6,7 @@ $accent-gray: #e1e0dd;
 $accent-black: #35342f;
 $accent-orange: #ec6b2d;
 $accent-red: #dd6464;
+$neo-green: #58bf00;
 
 body {
   background-color: $main-bg-color;
@@ -77,4 +78,27 @@ footer {
   #heart{
     color: $accent-red;
   }
+}
+
+.send
+{
+    font-size: 14px;
+
+    display: inline-block;
+
+    width: 100px;
+    margin-top: 40px;
+    margin-left: 20px;
+    padding: 14px;
+
+    transition: color .3s,background-color .3s,border-color .3s;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    color: white;
+    border: none;
+    border-radius: 3px;
+    background-color: $neo-green;
+
+    outline: none;
 }

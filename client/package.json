@@ -11,10 +11,6 @@
     "start": "node devServer.js",
     "lint": "eslint src"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tsaiDavid/simple-redux-boilerplate.git"
-  },
   "license": "MIT",
   "homepage": "https://github.com/tsaiDavid/simple-redux-boilerplate",
   "devDependencies": {
@@ -35,6 +31,7 @@
     "express": "^4.13.3",
     "html-webpack-plugin": "^2.24.1",
     "node-sass": "^3.4.2",
+    "redux": "^3.7.2",
     "redux-devtools": "^3.0.1",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.2",
