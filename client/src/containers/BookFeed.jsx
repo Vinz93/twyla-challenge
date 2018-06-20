@@ -2,14 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchBooks } from '../actions';
-
-const BookList = ({ books }) => (
-  <ul>
-    {books.map(book => {
-      return <li key={book.id}>{book.title}</li>;
-    })}
-  </ul>
-);
+import BookList from '../components/BookList';
+import BookModal from '../components/BookModal';
 
 class BookFeed extends Component {
   componentWillMount() {
@@ -20,6 +14,7 @@ class BookFeed extends Component {
     return (
       <div className="book-feed">
         Bookfeed
+        <BookModal />
         <BookList books={books}/>
       </div>
     );
