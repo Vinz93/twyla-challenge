@@ -1,7 +1,3 @@
-/**
- * Constants are important - they describe what type of action is performed
- * within your app. Combined with the DevTools/logger, you can see how state and subsequently
- * your UI is being affected.
- */
-export const CREATE_USER = 'CREATE_USER';
-export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
+export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
+export const CREATE_USER_FAILURE = 'CREATE_USER_FAILURE';
+export const FETCH_BOOKS = 'FETCH_BOOKS';

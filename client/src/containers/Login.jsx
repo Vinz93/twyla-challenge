@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 class Login extends Component {
   constructor(props) {
@@ -12,8 +12,9 @@ class Login extends Component {
   }
  handleSubmit(event) {
    const { value } = this.state;
-   //fetch to server /post users
-   console.log(value);
+   // fetch to server /post users
+  //  console.log(value);
+   this.props.createUser(value);
    event.preventDefault();
  }
   render() {
@@ -29,4 +30,8 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  createUser: PropTypes.func.isRequired,
+};
 export default Login;
