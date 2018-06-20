@@ -12,8 +12,6 @@ class Login extends Component {
   }
  handleSubmit(event) {
    const { value } = this.state;
-   // fetch to server /post users
-  //  console.log(value);
    this.props.createUser(value);
    event.preventDefault();
  }
