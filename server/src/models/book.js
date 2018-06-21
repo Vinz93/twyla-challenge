@@ -35,6 +35,8 @@ const BookSchema = new Schema({
     required: true,
     ref: 'User',
   },
+}, {
+  timestamps: true,
 });
 
 BookSchema.plugin(paginate);

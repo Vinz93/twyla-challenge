@@ -32,7 +32,10 @@ const BookController = {
    */
 
   async readAll(req, res) {
-    const books = await Book.find({}).populate('addedBy');
+    const sort = {
+      createdAt: 1,
+    };
+    const books = await Book.find({}, null, { sort }).populate('addedBy');
     const response = await Promise.map(books, async (book) => {
       const select = {
         rate: 1,
