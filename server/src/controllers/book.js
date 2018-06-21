@@ -41,8 +41,12 @@ const BookController = {
       };
       const reviews = await Evaluation.find({ book: book.id }, select)
         .populate('user', 'userName');
+      const { title, isbn, id } = book;
       return {
-        book,
+        id,
+        title,
+        isbn,
+        addedBy: book.addedBy.userName,
         reviews,
       };
     });
