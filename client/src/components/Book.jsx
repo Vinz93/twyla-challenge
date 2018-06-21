@@ -8,7 +8,7 @@ const Book = ({ book }) => (
     <p className="title">{book.title}</p>
     <p className="isbn"> ISBN: {book.isbn}</p>
     <BookModal buttonName={"Add review"}>
-      <ReviewForm />
+      <ReviewForm bookId={book.id} />
     </BookModal>
   </li>
 );

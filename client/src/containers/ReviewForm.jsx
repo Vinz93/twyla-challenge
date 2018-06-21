@@ -22,7 +22,7 @@ class ReviewForm extends Component {
     this.props.reviewBook({
       rate,
       comment
-    });
+    }, this.props.bookId);
     event.preventDefault();
   }
   render() {
@@ -47,5 +47,6 @@ class ReviewForm extends Component {
 
 ReviewForm.propTypes = {
   reviewBook: PropTypes.func.isRequired,
+  bookId: PropTypes.string.isRequired,
 };
 export default connect(null, { reviewBook })(ReviewForm);

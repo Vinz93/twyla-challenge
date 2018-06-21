@@ -42,3 +42,20 @@ export const createBook = (book) => {
 export const fetchBooks = () => {
   return fetch(`${BASE_URL}/books`).then(res => res.json());
 };
+
+export const reviewBook = (review, bookId) => {
+  return fetch(`${BASE_URL}/books/${bookId}/review`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: getJwt(),
+    },
+    body: JSON.stringify(review),
+  }).then(res => res.json().then(json => {
+    if (!res.ok) {
+      return Promise.reject(json);
+    }
+    return json;
+  }
+  ));
+};

@@ -4,6 +4,8 @@ import {
   CREATE_USER_FAILURE,
   CREATE_BOOK_SUCCESS,
   CREATE_BOOK_FAILURE,
+  CREATE_REVIEW_SUCCESS,
+  CREATE_REVIEW_FAILURE,
   FETCH_BOOKS } from '../constants/ActionTypes';
 
 export const createUser = (userName) => (dispatch, getState) => {
@@ -42,6 +44,21 @@ export const fetchBooks = () => (dispatch, getState) => {
     dispatch({
       type: FETCH_BOOKS,
       response,
+    });
+  });
+};
+
+export const reviewBook = (review, bookId) => (dispatch, getState) => {
+  return api.reviewBook(review, bookId).then(response => {
+    dispatch({
+      type: CREATE_REVIEW_SUCCESS,
+      response,
+    });
+  },
+  err => {
+    dispatch({
+      type: CREATE_REVIEW_FAILURE,
+      message: err.message || 'something went wrong reviewing the book',
     });
   });
 };
