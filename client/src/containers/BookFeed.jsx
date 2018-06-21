@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchBooks } from '../actions';
 import BookList from '../components/BookList';
 import BookModal from '../components/BookModal';
+import BookForm from './BookForm';
 
 class BookFeed extends Component {
   componentWillMount() {
@@ -13,9 +14,11 @@ class BookFeed extends Component {
     const { books } = this.props;
     return (
       <div className="book-feed">
-        Bookfeed
-        <BookModal />
-        <BookList books={books}/>
+        <h1>Book List</h1>
+        <BookModal buttonName={"Add book"}>
+          <BookForm />
+        </BookModal>
+        <BookList books={books} />
       </div>
     );
   }

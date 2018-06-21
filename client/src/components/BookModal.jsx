@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Modal from 'react-modal';
-
-import BookForm from '../containers/BookForm';
 
 const customStyles = {
   content: {
@@ -41,19 +39,25 @@ class BookModal extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.openModal}>Add book</button>
+      <div className="book-modal">
+        <button className="send" onClick={this.openModal}>{this.props.buttonName}</button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           style={customStyles}
+          ariaHideApp={false}
         >
           <button onClick={this.closeModal}>X</button>
-          <BookForm />
+          {this.props.children}
         </Modal>
       </div>
     );
   }
 }
+
+BookModal.propTypes = {
+  children: PropTypes.element.isRequired,
+  buttonName: PropTypes.string.isRequired,
+};
 
 export default BookModal;

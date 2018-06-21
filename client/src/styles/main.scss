@@ -82,3 +82,33 @@ input:focus {
 
     outline: none;
 }
+
+.book-feed {
+  width: 100vh;
+}
+
+.book-list {
+  list-style: none;
+}
+
+.book {
+  padding: 6px;
+  border: 1px solid;
+  width: 300px;
+  margin: 5px;
+}
+
+.book > .title {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.book > .isbn {
+  font-size: 20px;
+}
+
+.book-modal > button {
+  float: right;
+}
