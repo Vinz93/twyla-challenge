@@ -12,17 +12,22 @@ class ReviewForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleRate(event) {
-    this.setState({ rate: event.target.value });
+    const rate = event.target.value;
+    this.setState({ rate });
   }
   handleComment(event) {
     this.setState({ comment: event.target.value });
   }
   handleSubmit(event) {
     const { rate, comment } = this.state;
-    this.props.reviewBook({
-      rate,
-      comment
-    }, this.props.bookId);
+    if (rate > 0 && rate <= 5) {
+      this.props.reviewBook({
+        rate,
+        comment
+      }, this.props.bookId);
+    } else {
+      alert('rate must be between');
+    }
     event.preventDefault();
   }
   render() {

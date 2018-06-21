@@ -7,9 +7,14 @@ $accent-black: #35342f;
 $accent-orange: #ec6b2d;
 $accent-red: #dd6464;
 $neo-green: #58bf00;
+$comment-color: #F6F686;
 
 * {
   border: none;
+}
+
+ul {
+  list-style: none;
 }
 
 body {
@@ -93,11 +98,12 @@ input:focus {
 }
 
 .book {
-  padding: 6px;
-  border: 1px solid;
+  padding: 15px 25px;
   width: 300px;
-  margin: 5px;
+  margin: 10px;
+  border-radius: 10px;
   position: relative;
+  background-color: #8A8A40;
 }
 
 .book > .title {
@@ -107,7 +113,7 @@ input:focus {
   text-transform: capitalize;
 }
 
-.book > .isbn {
+.book-info > .isbn {
   font-size: 20px;
 }
 
@@ -115,11 +121,24 @@ input:focus {
   float: right;
 }
 
+.reviews-container {
+  position: relative;
+}
+.reviews-container > h3 {
+  margin-bottom: 60px
+}
+.comment {
+  padding: 5px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: $comment-color;
+}
+
 .book .send {
   padding: 5px;
   margin: 0;
   display: inline-block;
   position: absolute;
-  bottom: 10px;
+  top: 20px;
   right: 10px;
 }
