@@ -81,6 +81,7 @@ input:focus {
     background-color: $neo-green;
 
     outline: none;
+    cursor: pointer;
 }
 
 .book-feed {
@@ -96,6 +97,7 @@ input:focus {
   border: 1px solid;
   width: 300px;
   margin: 5px;
+  position: relative;
 }
 
 .book > .title {
@@ -111,4 +113,13 @@ input:focus {
 
 .book-modal > button {
   float: right;
+}
+
+.book .send {
+  padding: 5px;
+  margin: 0;
+  display: inline-block;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
