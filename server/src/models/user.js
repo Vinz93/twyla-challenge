@@ -26,8 +26,6 @@ const UserSchema = new Schema({
     trim: true,
   },
 
-}, {
-  timestamps: true,
 });
 
 UserSchema.plugin(fieldRemover, '__v');

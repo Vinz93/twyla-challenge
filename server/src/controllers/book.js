@@ -1,4 +1,5 @@
 import httpStatus from 'http-status';
+import Promise from 'bluebird';
 
 import { APIError } from '../helpers/errors';
 import Book from '../models/book';
@@ -32,7 +33,20 @@ const BookController = {
 
   async readAll(req, res) {
     const books = await Book.find({}).populate('addedBy');
-    res.json(books);
+    const response = await Promise.map(books, async (book) => {
+      const select = {
+        rate: 1,
+        comment: 1,
+        user: 1,
+      };
+      const reviews = await Evaluation.find({ book: book.id }, select)
+        .populate('user', 'userName');
+      return {
+        book,
+        reviews,
+      };
+    });
+    res.status(httpStatus.OK).json(response);
   },
 
   /**
